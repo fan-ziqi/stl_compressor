@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="stl_compressor",
-    version="2.4",
+    version="2.5",
     description="STL Compressor",
     long_description=long_description,
     long_description_content_type="text/markdown",

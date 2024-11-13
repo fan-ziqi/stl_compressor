@@ -7,7 +7,7 @@ STL Compressor is a tool designed to compress STL files efficiently. Users can c
 Install with pip
 
 ```bash
-pip install --upgrade stl_compressor -i https://www.pypi.org/simple/
+pip install stl_compressor
 stl_compressor
 ```
 
