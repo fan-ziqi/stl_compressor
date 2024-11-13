@@ -151,7 +151,7 @@ separator.pack(fill='x')
 bottom_frame = tk.Frame(window)
 bottom_frame.pack(side=tk.BOTTOM, fill=tk.X)
 
-version_label = tk.Label(bottom_frame, text="STL Compressor v2.2")
+version_label = tk.Label(bottom_frame, text="STL Compressor v2.4")
 version_label.pack(side=tk.LEFT)
 
 licence_label = tk.Label(bottom_frame, text="Developed by github@fan-ziqi")

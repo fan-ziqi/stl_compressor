@@ -4,18 +4,18 @@ STL Compressor is a tool designed to compress STL files efficiently. Users can c
 
 ## Usage
 
-* Windows users can download [here](https://github.com/fan-ziqi/stl_compressor/releases)
+Install with pip
 
-* Python
+```bash
+pip install --upgrade stl_compressor -i https://www.pypi.org/simple/
+stl_compressor
+```
 
-  ```bash
-  pip install --upgrade stl_compressor -i https://www.pypi.org/simple/
-  stl_compressor
-  ```
+You can also download the Windows exe file [here](https://github.com/fan-ziqi/stl_compressor/releases)
 
 ## Packaging
 
-To package the application as a standalone executable, use PyInstaller:
+To package the application as a standalone exe file for windows, use PyInstaller:
 
 ```bash
 pyinstaller --onefile --windowed stl_compressor/stl_compressor_ui.py

@@ -1,3 +1,0 @@
-trimesh
-open3d
-fast_simplification
