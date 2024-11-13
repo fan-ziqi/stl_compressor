@@ -2,12 +2,13 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import ttk
-import trimesh
+# import trimesh
+import open3d as o3d
 import threading
 
 def choose_files(entry_widget):
     # Function to choose input files
-    paths = filedialog.askopenfilenames(filetypes=[("STL files", "*.stl")])
+    paths = filedialog.askopenfilenames(filetypes=[("STL files", "*.stl"), ("STL files", "*.STL")])
     if paths:
         entry_widget.delete(0, tk.END)
         entry_widget.insert(0, ";".join(paths))
@@ -27,10 +28,17 @@ def compress_stl(input_paths, output_path, target_triangles, progress_bar, progr
     progress_per_file = 100 / total_files
 
     for i, file_path in enumerate(files):
-        mesh = trimesh.load_mesh(file_path)
+        # mesh = trimesh.load_mesh(file_path)
+        # simplified_mesh = mesh.simplify_quadric_decimation(target_triangles)
+        # output_file_path = os.path.join(output_path, os.path.basename(file_path))
+        # simplified_mesh.export(output_file_path)
+
+        mesh = o3d.io.read_triangle_mesh(file_path)
         simplified_mesh = mesh.simplify_quadric_decimation(target_triangles)
+        simplified_mesh.compute_triangle_normals()
+        simplified_mesh.compute_vertex_normals()
         output_file_path = os.path.join(output_path, os.path.basename(file_path))
-        simplified_mesh.export(output_file_path)
+        o3d.io.write_triangle_mesh(output_file_path, simplified_mesh)
 
         # Update progress bar
         progress = int((i + 1) * progress_per_file)
@@ -83,6 +91,7 @@ def compress():
 
     # Start the thread
     compress_thread.start()
+
 
 root = tk.Tk()
 root.title("STL Compressor")
@@ -142,12 +151,16 @@ separator.pack(fill='x')
 bottom_frame = tk.Frame(window)
 bottom_frame.pack(side=tk.BOTTOM, fill=tk.X)
 
-version_label = tk.Label(bottom_frame, text="STL Compressor v1.2")
+version_label = tk.Label(bottom_frame, text="STL Compressor v2.2")
 version_label.pack(side=tk.LEFT)
 
-licence_label = tk.Label(bottom_frame, text="Made by github@fan-ziqi")
+licence_label = tk.Label(bottom_frame, text="Developed by github@fan-ziqi")
 licence_label.pack(side=tk.RIGHT)
 
 window.grid(row=0, column=0)
 
-window.mainloop()
+def main():
+    window.mainloop()
+
+if __name__ == '__main__':
+    main()
