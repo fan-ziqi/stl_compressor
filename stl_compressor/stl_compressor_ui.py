@@ -124,11 +124,11 @@ output_button = tk.Button(output_frame, text="Browse", command=lambda: choose_ou
 output_button.pack(side=tk.LEFT)
 
 # Slider for selecting target triangles
-slider_label = tk.Label(window, text="Select Target Triangles (100-10000):")
+slider_label = tk.Label(window, text="Select Target Triangles (100-50000):")
 slider_label.pack()
 
-slider = tk.Scale(window, from_=100, to=10000, orient=tk.HORIZONTAL, length=300)
-slider.set(1000)
+slider = tk.Scale(window, from_=100, to=50000, orient=tk.HORIZONTAL, length=300)
+slider.set(3000)
 slider.pack()
 
 # Progress bar and label
@@ -151,7 +151,7 @@ separator.pack(fill='x')
 bottom_frame = tk.Frame(window)
 bottom_frame.pack(side=tk.BOTTOM, fill=tk.X)
 
-version_label = tk.Label(bottom_frame, text="STL Compressor v2.5")
+version_label = tk.Label(bottom_frame, text="STL Compressor v2.8")
 version_label.pack(side=tk.LEFT)
 
 licence_label = tk.Label(bottom_frame, text="Developed by github@fan-ziqi")
